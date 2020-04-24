@@ -58,12 +58,10 @@ class IntroductionCarousel extends StatelessWidget {
               ),
             ],
           ),
-          bottomSheet: carouselState.checkPage(
-              carouselScreens,
-              sliderButtonLeftText,
-              sliderButtonRightText,
-              finalScreenText,
-              nextPage),
+          bottomSheet: carouselState.isLastPage(carouselScreens)
+              ? BottomSheetButtons(
+                  carouselScreens, sliderButtonLeftText, sliderButtonRightText)
+              : FinalScreenBottomSheet(finalScreenText, nextPage),
         );
       }),
     );

@@ -11,14 +11,7 @@ class CarouselState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Widget checkPage(List<Widget> screens, String leftButton, String rightButton,
-      String finalText, Function nextPage) {
-    if (currentPage != screens.length - 1) {
-      return BottomSheetButtons(screens, leftButton, rightButton);
-    } else {
-      return FinalScreenBottomSheet(finalText, nextPage);
-    }
-  }
+  bool isLastPage(List<Widget> screens) => currentPage != screens.length - 1;
 
   void skipButton(int length) {
     pageController.animateToPage(length,
