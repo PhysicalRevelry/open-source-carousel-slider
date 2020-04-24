@@ -3,9 +3,14 @@ import 'package:provider/provider.dart';
 import 'page_indicator.dart';
 import 'package:introcarousel/state/state.dart';
 
+//The right and left text buttons on either side of the page indicators
+//They are usually used for "SKIP" and "NEXT"
 class BottomSheetButtons extends StatelessWidget {
   final List<Widget> sliderScreens;
-  BottomSheetButtons(this.sliderScreens);
+  final String leftButtonLabel;
+  final String rightButtonLabel;
+  BottomSheetButtons(
+      this.sliderScreens, this.leftButtonLabel, this.rightButtonLabel);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class BottomSheetButtons extends StatelessWidget {
                 carouselState.skipButton(sliderScreens.length);
               },
               child: Text(
-                'SKIP',
+                leftButtonLabel,
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.w600,
@@ -44,7 +49,7 @@ class BottomSheetButtons extends StatelessWidget {
                 carouselState.nextButton();
               },
               child: Text(
-                'NEXT',
+                rightButtonLabel,
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.w600,

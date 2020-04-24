@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//A series of dots indicating how many carousel sliders there are
+//A larger and darker dot will indicate which page you're on
 Widget buildPageIndicator(bool isCurrentPage) {
   return AnimatedContainer(
     duration: Duration(milliseconds: 375),
