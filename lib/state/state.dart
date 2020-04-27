@@ -6,6 +6,10 @@ class CarouselState extends ChangeNotifier {
   final PageController pageController = PageController(initialPage: 0);
   int currentPage = 0;
 
+  bool isPage(int i) {
+    return i == currentPage;
+  }
+
   void turnPage(int page) {
     currentPage = page;
     notifyListeners();

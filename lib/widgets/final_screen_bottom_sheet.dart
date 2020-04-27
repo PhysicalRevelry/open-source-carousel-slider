@@ -6,10 +6,13 @@ import 'dart:io';
 class FinalScreenBottomSheet extends StatelessWidget {
   final String finalScreenText;
   final Function nextPage;
-  FinalScreenBottomSheet(this.finalScreenText, this.nextPage);
+  final Color bottomSheetText;
+  FinalScreenBottomSheet(
+      this.finalScreenText, this.nextPage, this.bottomSheetText);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       child: InkWell(
         onTap: () {
@@ -17,12 +20,12 @@ class FinalScreenBottomSheet extends StatelessWidget {
         },
         child: Container(
           height: Platform.isIOS ? 100 : 90,
-          color: Colors.blue,
+          color: theme.buttonColor,
           alignment: Alignment.center,
           child: Text(
             finalScreenText,
             style: TextStyle(
-              color: Colors.white,
+              color: bottomSheetText,
               fontWeight: FontWeight.w600,
             ),
           ),

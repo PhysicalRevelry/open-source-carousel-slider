@@ -18,6 +18,7 @@ class IntroductionCarousel extends StatelessWidget {
   final String sliderButtonLeftText;
   final String sliderButtonRightText;
   final Function nextPage;
+  final Color bottomSheetText;
 
   IntroductionCarousel(
     this.carouselScreens,
@@ -25,15 +26,20 @@ class IntroductionCarousel extends StatelessWidget {
     String finalScreenText,
     String sliderButtonLeftText,
     String sliderButtonRightText,
+    Color bottomSheet,
+    Color bottomSheetText,
   })  : this.finalScreenText =
-            finalScreenText == null ? "Continue" : finalScreenText,
+            finalScreenText == null ? "CONTINUE" : finalScreenText,
         this.sliderButtonLeftText =
             sliderButtonLeftText == null ? "SKIP" : sliderButtonLeftText,
         this.sliderButtonRightText =
-            sliderButtonRightText == null ? "NEXT" : sliderButtonRightText;
+            sliderButtonRightText == null ? "NEXT" : sliderButtonRightText,
+        this.bottomSheetText =
+            bottomSheetText == null ? Colors.white : bottomSheetText;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -60,8 +66,12 @@ class IntroductionCarousel extends StatelessWidget {
           ),
           bottomSheet: carouselState.isLastPage(carouselScreens)
               ? BottomSheetButtons(
-                  carouselScreens, sliderButtonLeftText, sliderButtonRightText)
-              : FinalScreenBottomSheet(finalScreenText, nextPage),
+                  carouselScreens,
+                  sliderButtonLeftText,
+                  sliderButtonRightText,
+                )
+              : FinalScreenBottomSheet(
+                  finalScreenText, nextPage, bottomSheetText),
         );
       }),
     );
