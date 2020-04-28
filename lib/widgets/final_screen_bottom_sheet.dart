@@ -20,7 +20,7 @@ class FinalScreenBottomSheet extends StatelessWidget {
         },
         child: Container(
           height: Platform.isIOS ? 100 : 90,
-          color: theme.buttonColor,
+          color: theme.primaryColor,
           alignment: Alignment.center,
           child: Text(
             finalScreenText,
