@@ -1,6 +1,7 @@
 # introcarousel
 
 Intro carousel to explain an app before the log in screen
+User must provide the widgets/ images and button text needed 
 
 ## Getting Started
 

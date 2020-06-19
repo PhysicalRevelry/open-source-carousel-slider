@@ -6,6 +6,7 @@ class CarouselState extends ChangeNotifier {
   final PageController pageController = PageController(initialPage: 0);
   int currentPage = 0;
 
+  //for building the slide indicator dots between "Next" and "Skip"
   bool isPage(int i) {
     return i == currentPage;
   }
@@ -15,6 +16,8 @@ class CarouselState extends ChangeNotifier {
     notifyListeners();
   }
 
+
+  //to determine if last slider so the bottom page can come up
   bool isLastPage(List<Widget> screens) => currentPage != screens.length - 1;
 
   void skipButton(int length) {
