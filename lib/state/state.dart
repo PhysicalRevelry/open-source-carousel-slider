@@ -11,11 +11,11 @@ class CarouselState extends ChangeNotifier {
     return i == currentPage;
   }
 
+  //changes currentPage to adjust page indicators, bold vs. normal
   void turnPage(int page) {
     currentPage = page;
     notifyListeners();
   }
-
 
   //to determine if last slider so the bottom page can come up
   bool isLastPage(List<Widget> screens) => currentPage != screens.length - 1;
