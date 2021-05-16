@@ -7,6 +7,10 @@ import 'package:introcarousel/widgets/final_screen_bottom_sheet.dart';
 import 'package:introcarousel/widgets/slider_buttons.dart';
 import 'package:provider/provider.dart';
 
+const textContinue = "CONTINUE";
+const textNext = "NEXT";
+const textSkip = "SKIP";
+
 //You will need
 //1) a list of widget to pass into the carouselScreens
 //2) a string for the buttons on either side of the page indicators
@@ -29,11 +33,11 @@ class IntroductionCarousel extends StatelessWidget {
     Color bottomSheet,
     Color bottomSheetText,
   })  : this.finalScreenText =
-            finalScreenText == null ? "CONTINUE" : finalScreenText,
+            finalScreenText == null ? textContinue : finalScreenText,
         this.sliderButtonLeftText =
-            sliderButtonLeftText == null ? "SKIP" : sliderButtonLeftText,
+            sliderButtonLeftText == null ? textSkip : sliderButtonLeftText,
         this.sliderButtonRightText =
-            sliderButtonRightText == null ? "NEXT" : sliderButtonRightText,
+            sliderButtonRightText == null ? textNext : sliderButtonRightText,
         this.bottomSheetText =
             bottomSheetText == null ? Colors.white : bottomSheetText;
 
