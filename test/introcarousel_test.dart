@@ -10,7 +10,9 @@ class Harness extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: child));
+    return MediaQuery(
+        data: MediaQueryData(),
+        child: MaterialApp(home: Scaffold(body: child)));
   }
 }
 
@@ -30,7 +32,7 @@ void main() {
   testWidgets('Swipe through, renders all screens',
       (WidgetTester tester) async {
     await tester.pumpWidget(Harness(
-      child: IntroductionCarousel([a, b, c], () {}),
+      child: IntroductionCarousel(screens: [a, b, c], callback: () {}),
     ));
     // Verify A renders
     await expectLater(find.byType(Harness), matchesGoldenFile('a.png'));
@@ -57,7 +59,7 @@ void main() {
 
   testWidgets('Next through, renders all screens', (WidgetTester tester) async {
     await tester.pumpWidget(Harness(
-      child: IntroductionCarousel([a, b, c], () {}),
+      child: IntroductionCarousel(screens: [a, b, c], callback: () {}),
     ));
 
     await expectLater(find.byType(Harness), matchesGoldenFile('a.png'));
@@ -80,7 +82,11 @@ void main() {
   testWidgets('Skip through, then continue', (WidgetTester tester) async {
     bool clicked = false;
     await tester.pumpWidget(Harness(
-      child: IntroductionCarousel([a, b, c], () {clicked = true;}),
+      child: IntroductionCarousel(
+          screens: [a, b, c],
+          callback: () {
+            clicked = true;
+          }),
     ));
 
     await tester.tap(find.text(textSkip));
